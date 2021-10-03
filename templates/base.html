@@ -2,7 +2,8 @@
 <!doctype html>
 <title>{% block title %}{% endblock %} - Test</title>
 <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-  <h1>Flaskr</h1>
+<link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.css') }}">
+<h1>Flaskr</h1>
 <section class="content">
   <header>
     {% block header %}{% endblock %}
