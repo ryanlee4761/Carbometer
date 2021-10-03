@@ -1,0 +1,14 @@
+<!-- https://flask.palletsprojects.com/en/2.0.x/tutorial/templates/ -->
+<!doctype html>
+<title>{% block title %}{% endblock %} - Test</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <h1>Flaskr</h1>
+<section class="content">
+  <header>
+    {% block header %}{% endblock %}
+  </header>
+  {% for message in get_flashed_messages() %}
+    <div class="flash">{{ message }}</div>
+  {% endfor %}
+  {% block content %}{% endblock %}
+</section>
