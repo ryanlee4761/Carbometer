@@ -16,12 +16,15 @@ def create_app(test_config = None):
     def index():
         return render_template('index.html')
 
-    @app.route("/input", methods=("GET", "POST"))
+    @app.route("/inputpage", methods=("GET", "POST"))
     def inputpage():
         if request.method == "POST":
             given = request.form['inputfield']
-            flash(given)
-        return render_template('input.html')
+            if int(given) >= 500:
+                flash("That's a big number!")
+            else:
+                flash("Tiny. Go bigger.")
+        return render_template('inputpage.html')
 
     return app
 

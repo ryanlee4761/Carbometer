@@ -11,5 +11,9 @@
   {% for message in get_flashed_messages() %}
     <div class="flash">{{ message }}</div>
   {% endfor %}
+  <nav>
+    <p><a href="{{ url_for('index') }}" >Homepage</a></p>
+    <p><a href="{{ url_for('inputpage') }}" >Input page</a></p>
+  </nav>
   {% block content %}{% endblock %}
 </section>
