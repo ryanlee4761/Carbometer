@@ -1,11 +1,10 @@
 <!-- https://flask.palletsprojects.com/en/2.0.x/tutorial/templates/ -->
 <!doctype html>
-<title>{% block title %}{% endblock %} - Test</title>
-<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-<link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.css') }}">
-<h1>Flaskr</h1>
-<section class="content">
+<main class="content">
   <header>
+    <title>{% block title %}{% endblock %} - Test</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.css') }}">
     {% block header %}{% endblock %}
   </header>
   {% for message in get_flashed_messages() %}
@@ -15,5 +14,8 @@
     <p><a href="{{ url_for('index') }}" >Homepage</a></p>
     <p><a href="{{ url_for('inputpage') }}" >Input page</a></p>
   </nav>
-  {% block content %}{% endblock %}
-</section>
+  <body>
+    <h1>Carbometer</h1>
+    {% block content %}{% endblock %}
+  </body>
+</main>
