@@ -26,8 +26,8 @@ def create_app(test_config = None):
                 flash("Tiny. Go bigger.")
         return render_template('inputpage.html')
     
-    @app.route("/questionnaire", methods=("GET", "POST"))
-    def questionnaire():
+    @app.route("/foodquestionnaire", methods=("GET", "POST"))
+    def foodquestionnaire():
         if request.method == "POST":
             session['responsedict'] = {
                 'beef': request.form['beef'], 
@@ -42,16 +42,16 @@ def create_app(test_config = None):
             }
             return redirect(url_for('results'))
         session['responsedict'] = {}
-        return render_template('questionnaire.html')
+        return render_template('foodquestionnaire.html')
 
-    @app.route("/results")
+    @app.route("/foodresults")
     def results():
         responsedict = session.get('responsedict', None)
         #return render_template('results.html')
         if responsedict != {}:
             return responsedict
         else:
-            return redirect('questionnaire')
+            return redirect('foodquestionnaire')
 
     return app
 app = create_app()
