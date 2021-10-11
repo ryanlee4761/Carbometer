@@ -1,7 +1,8 @@
 from flask import Flask, render_template, flash, request, redirect, url_for, session
 #from flaskr.db import get_db
 
-def create_app(test_config = None):
+
+def create_app(test_config=None):
     app = Flask(__name__, instance_relative_config=True)
     app.config.from_mapping(
         SECRET_KEY='dev',
@@ -25,20 +26,20 @@ def create_app(test_config = None):
             else:
                 flash("Tiny. Go bigger.")
         return render_template('inputpage.html')
-    
+
     @app.route("/foodquestionnaire", methods=("GET", "POST"))
     def foodquestionnaire():
         if request.method == "POST":
             session['responsedict'] = {
-                'beef': request.form['beef'], 
-                'pork': request.form['pork'], 
-                'poultry': request.form['poultry'], 
-                'cheese': request.form['cheese'], 
-                'eggs': request.form['eggs'], 
-                'rice': request.form['rice'], 
-                'legumes': request.form['legumes'], 
-                'carrots': request.form['carrots'], 
-                'potatoes': request.form['potatoes'], 
+                'beef': request.form['beef'],
+                'pork': request.form['pork'],
+                'poultry': request.form['poultry'],
+                'cheese': request.form['cheese'],
+                'eggs': request.form['eggs'],
+                'rice': request.form['rice'],
+                'legumes': request.form['legumes'],
+                'carrots': request.form['carrots'],
+                'potatoes': request.form['potatoes'],
             }
             return redirect(url_for('results'))
         session['responsedict'] = {}
@@ -47,11 +48,19 @@ def create_app(test_config = None):
     @app.route("/foodresults")
     def results():
         responsedict = session.get('responsedict', None)
-        #return render_template('results.html')
+        # return render_template('results.html')
         if responsedict != {}:
-            return responsedict
+            emissions = [6.62, 2.45, 1.72, 1.26,
+                         0.89, 0.72, 0.16, 0.11, 0.07, 0.03]
+            total_co2 = 0
+
+            for i in range(len(emissions)-1):
+                total_co2 += int(list(responsedict.values())[i]) * emissions[i]
+            return render_template('foodresults.html', total_co2=total_co2)
         else:
             return redirect('foodquestionnaire')
 
     return app
+
+
 app = create_app()
