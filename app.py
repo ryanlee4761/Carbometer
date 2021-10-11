@@ -1,4 +1,4 @@
-from flask import Flask, render_template, flash, request, url_for
+from flask import Flask, render_template, flash, request, redirect, url_for, session
 #from flaskr.db import get_db
 
 def create_app(test_config = None):
@@ -25,7 +25,33 @@ def create_app(test_config = None):
             else:
                 flash("Tiny. Go bigger.")
         return render_template('inputpage.html')
+    
+    @app.route("/questionnaire", methods=("GET", "POST"))
+    def questionnaire():
+        if request.method == "POST":
+            session['responsedict'] = {
+                'beef': request.form['beef'], 
+                'pork': request.form['pork'], 
+                'poultry': request.form['poultry'], 
+                'cheese': request.form['cheese'], 
+                'eggs': request.form['eggs'], 
+                'rice': request.form['rice'], 
+                'legumes': request.form['legumes'], 
+                'carrots': request.form['carrots'], 
+                'potatoes': request.form['potatoes'], 
+            }
+            return redirect(url_for('results'))
+        session['responsedict'] = {}
+        return render_template('questionnaire.html')
+
+    @app.route("/results")
+    def results():
+        responsedict = session.get('responsedict', None)
+        #return render_template('results.html')
+        if responsedict != {}:
+            return responsedict
+        else:
+            return redirect('questionnaire')
 
     return app
-
 app = create_app()
