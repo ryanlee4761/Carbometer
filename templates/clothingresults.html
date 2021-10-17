@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<h1>{% block title %}Cothing CO2 Results{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+<p>Your projected annual CO2 emissions from clothing (lbs): {{ clothingco2 }}</p>
+{% endblock %}

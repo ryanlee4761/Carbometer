@@ -7,16 +7,18 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.css') }}">
   </header>
   {% for message in get_flashed_messages() %}
-    <div class="flash">{{ message }}</div>
+  <div class="flash">{{ message }}</div>
   {% endfor %}
   <nav>
     <ul>
-      <li><a href="{{ url_for('index') }}" >Homepage</a></li>
-      <li><a href="{{ url_for('inputpage') }}" >Input testing (to remove)</a></li>
-      <li><a href="{{ url_for('foodquestionnaire') }}" >Questionnaire</a></li>
+      <li><a href="{{ url_for('index') }}">Homepage</a></li>
+      <li><a href="{{ url_for('foodquestionnaire') }}">Food</a></li>
+      <li><a href="{{ url_for('clothingquestionnaire') }}">Clothing</a></li>
+      <li><a href="{{ url_for('utilitiesquestionnaire') }}">Utilities</a></li>
     </ul>
   </nav>
   {% block header %}{% endblock %}
+
   <body>
     <h1>Carbometer</h1>
     {% block content %}{% endblock %}

@@ -1,30 +1,29 @@
 {% extends 'base.html' %}
 
 {% block header %}
-    <h1>{% block title %}Food Questionnaire{% endblock %}</h1>
+<h1>{% block title %}Food Questionnaire{% endblock %}</h1>
 {% endblock %}
 
 {% block content %}
-    <h1>Food</h1>
-    <form method="post">
-        <label for="beef">How many times a week do you have a serving of beef?</label>
-        <input name="beef" id="beef" type="number" required>
-        <label for="pork">How many times a week do you have a serving of pork?</label>
-        <input name="pork" id="pork" type="number" required>
-        <label for="poultry">How many times a week do you have a serving of poultry?</label>
-        <input name="poultry" id="poultry" type="number" required>
-        <label for="cheese">How many times a week do you have a serving of cheese?</label>
-        <input name="cheese" id="cheese" type="number" required>
-        <label for="eggs">How many times a week do you have a serving of eggs?</label>
-        <input name="eggs" id="eggs" type="number" required>
-        <label for="rice">How many times a week do you have a serving of rice?</label>
-        <input name="rice" id="rice" type="number" required>
-        <label for="legumes">How many times a week do you have a serving of legumes?</label>
-        <input name="legumes" id="legumes" type="number" required>
-        <label for="carrots">How many times a week do you have a serving of carrots?</label>
-        <input name="carrots" id="carrots" type="number" required>
-        <label for="potatoes">How many times a week do you have a serving of potatoes?</label>
-        <input name="potatoes" id="potatoes" type="number" required>
-        <input type="submit" value="Submit">
-    </form>
+<form method="post">
+    <label for="beef">How many times a week do you have a serving of beef?</label>
+    <input name="beef" id="beef" type="number" required>
+    <label for="pork">How many times a week do you have a serving of pork?</label>
+    <input name="pork" id="pork" type="number" required>
+    <label for="poultry">How many times a week do you have a serving of poultry?</label>
+    <input name="poultry" id="poultry" type="number" required>
+    <label for="cheese">How many times a week do you have a serving of cheese?</label>
+    <input name="cheese" id="cheese" type="number" required>
+    <label for="eggs">How many times a week do you have a serving of eggs?</label>
+    <input name="eggs" id="eggs" type="number" required>
+    <label for="rice">How many times a week do you have a serving of rice?</label>
+    <input name="rice" id="rice" type="number" required>
+    <label for="legumes">How many times a week do you have a serving of legumes?</label>
+    <input name="legumes" id="legumes" type="number" required>
+    <label for="carrots">How many times a week do you have a serving of carrots?</label>
+    <input name="carrots" id="carrots" type="number" required>
+    <label for="potatoes">How many times a week do you have a serving of potatoes?</label>
+    <input name="potatoes" id="potatoes" type="number" required>
+    <input type="submit" value="Submit">
+</form>
 {% endblock %}

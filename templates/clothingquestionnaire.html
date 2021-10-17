@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<h1>{% block title %}Clothing Questionnaire{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+<form method="post">
+    <label for="clothing_often">How often do you buy clothes in a year?</label><!-- more clarity -->
+    <input name="clothing_often" id="clothing_often" type="number" required>
+    <label for="clothing_pieces">On average, about how many pieces of each do you buy each time you shop?</label>
+    <ol name="clothing_pieces">
+        <ul>
+            <p>Top</p>
+            <input name="clothing_top" id="clothing_top" type="number" required>
+        </ul>
+        <ul>
+            <p>Bottom</p>
+            <input name="clothing_bottom" id="clothing_bottom" type="number" required>
+        </ul>
+        <ul>
+            <p>Shoes</p>
+            <input name="clothing_shoes" id="clothing_shoes" type="number" required>
+        </ul>
+        <ul>
+            <p>Outerwear</p>
+            <input name="clothing_outerwear" id="clothing_outerwear" type="number" required>
+        </ul>
+    </ol>
+    <label for="">What are your laundry habits?</label>
+    <!--
+        idk how to turn this into numbers for the calculator, any suggestions?
+        <input name="" id="" type="number" required>
+    -->
+
+    <input type="submit" value="Submit">
+</form>
+{% endblock %}
