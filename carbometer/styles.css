@@ -1,0 +1,136 @@
+body {
+    font-family: Helvetica, sans-serif;
+    background-color: honeydew;
+    margin: 0;
+}
+
+nav {
+    background-color: #2F4F4F;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 100px 100px 130px 130px 100px 50px;
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+}
+
+nav h1 {
+    margin: 0;
+    font-size: 35px;
+    padding: 15px 10px;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  width: 130px;
+  overflow: scroll;
+  background-color: #F5F5F5;
+  padding: 5px 20px;
+  z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown-content h3 {
+  color: black;
+  text-align: left;
+}
+
+h3 {
+  text-align: center;
+  font-size: 20px;
+  color: white;
+}
+
+h3:hover, .active {
+  text-decoration: underline;
+  text-underline-offset: 10px;
+}
+
+img:first-of-type {
+  width: 100%;
+}
+
+h6 {
+  font-weight: normal;
+  margin: 0 1em;
+  text-align: right;
+  font-style: italic;
+  color: #D1D1D1;
+}
+
+.calculator-bar {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 2.5em;
+  margin: 1em 2em;
+  margin-top: 35px;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 0;
+}
+
+hr {
+  width: 100px;
+  color: grey;
+}
+
+.caption {
+  color: #A9A9A9;
+  text-align: center;
+  font-size: 10pt;
+  font-style: italic;
+}
+
+.calculator-bar div {
+  display: grid;
+  justify-items: center;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+button {
+  background-color: white;
+  padding: 5px;
+  margin-bottom: 10px;
+  font-size: 18px;
+  border: 1px solid black;
+}
+
+button:hover {
+  background-color: #2F4F4F;
+  color: white;
+}
+
+footer {
+  background-color: #2F4F4F;
+  color: white;
+  margin-top: 50px;
+  margin-bottom: 0;
+  padding: 5px 20px;
+  display: grid;
+  grid-template-columns: 2fr 175px 100px;
+  align-items: center;
+}
+
+footer a {
+  color: white;
+  display: block;
+}
+
+footer div {
+  line-height: 1.5em;
+}
