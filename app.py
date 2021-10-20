@@ -35,15 +35,15 @@ def create_app(test_config=None):
 
     bp = Blueprint('more', __name__, url_prefix='/more')
 
-    @bp.route("/more/about")
+    @bp.route("/about")
     def about():
         return render_template('more/about.html')
 
-    @bp.route("/more/action")
+    @bp.route("/action")
     def action():
         return render_template('more/action.html')
 
-    @bp.route("/more/sources")
+    @bp.route("/sources")
     def sources():
         return render_template('more/sources.html')
 
