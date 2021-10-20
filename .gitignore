@@ -3,4 +3,4 @@ __pycache__
 
 Procfile.windows
 config.py
-/templates/inputpage.html
+/templates/deprecated

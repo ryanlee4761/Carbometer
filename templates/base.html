@@ -1,26 +1,65 @@
-<!-- https://flask.palletsprojects.com/en/2.0.x/tutorial/templates/ -->
-<!doctype html>
-<main class="content">
-  <header>
-    <title>{% block title %}{% endblock %} - Test</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.css') }}">
-  </header>
-  {% for message in get_flashed_messages() %}
-  <div class="flash">{{ message }}</div>
-  {% endfor %}
-  <nav>
-    <ul>
-      <li><a href="{{ url_for('index') }}">Homepage</a></li>
-      <li><a href="{{ url_for('foodquestionnaire') }}">Food</a></li>
-      <li><a href="{{ url_for('clothingquestionnaire') }}">Clothing</a></li>
-      <li><a href="{{ url_for('utilitiesquestionnaire') }}">Utilities</a></li>
-    </ul>
-  </nav>
-  {% block header %}{% endblock %}
+<!DOCTYPE html>
+<html lang="en">
 
-  <body>
-    <h1>Carbometer</h1>
-    {% block content %}{% endblock %}
-  </body>
-</main>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  {% block css %}{% endblock %}
+  <title>{% block title %}{% endblock %}</title>
+</head>
+
+<body>
+  <nav>
+    <a href="{{ url_for('index') }}">
+      <h1>CARBOMETER</h1>
+    </a>
+    <a href="{{ url_for('index') }}" class="active">
+      <h3>HOME</h3>
+    </a>
+    <a href="{{ url_for('food') }}">
+      <h3>FOOD</h3>
+    </a>
+    <a href="{{ url_for('clothing') }}">
+      <h3>CLOTHING</h3>
+    </a>
+    <a href="{{ url_for('utilities') }}">
+      <h3>UTILITIES</h3>
+    </a>
+    <div class="dropdown">
+      <span>
+        <h3>MORE</h3>
+      </span>
+      <div class="dropdown-content">
+        <a href="{{ url_for('about') }}">
+          <h3>ABOUT</h3>
+        </a>
+        <a href="{{ url_for('action') }}">
+          <h3>ACTION</h3>
+        </a>
+        <a href="{{ url_for('sources') }}">
+          <h3>SOURCES</h3>
+        </a>
+      </div>
+    </div>
+  </nav>
+  {% block main %}{% endblock %}
+  <footer>
+    <div>
+      <h1>CARBOMETER</h1>
+      <p>
+        &#xa9; 2021 CarboMeter
+      </p>
+    </div>
+    <div>
+      <a href="{{ url_for('food') }}">Food</a>
+      <a href="{{ url_for('clothing') }}">Clothing</a>
+      <a href="{{ url_for('utilities') }}">Utilities</a>
+    </div>
+    <div>
+      <a href="{{ url_for('about') }}">About</a>
+      <a href="{{ url_for('action') }}">Action</a>
+      <a href="{{ url_for('sources') }}">Sources</a>
+    </div>
+  </footer>
+</body>

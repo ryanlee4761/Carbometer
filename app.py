@@ -1,4 +1,4 @@
-from flask import Flask, render_template, flash, request, redirect, url_for, session
+from flask import Flask, render_template, request, redirect, url_for, session
 
 
 def create_app(test_config=None):
@@ -21,7 +21,33 @@ def create_app(test_config=None):
     def index():
         return render_template('index.html')
 
-    @app.route("/foodquestionnaire", methods=("GET", "POST"))
+    @app.route("/clothing")
+    def clothing():
+        return render_template('clothing.html')
+
+    @app.route("/food")
+    def food():
+        return render_template('food.html')
+
+    @app.route("/clothing")
+    def utilities():
+        return render_template('utilities.html')
+
+    @app.route("/more/about")
+    def about():
+        return render_template('more/about.html')
+
+    @app.route("/more/action")
+    def action():
+        return render_template('more/action.html')
+
+    @app.route("/more/sources")
+    def sources():
+        return render_template('more/sources.html')
+
+    # got lazy, just commented out the old python stuff, need to refer to it later
+    # for when i add the questionnaire
+    """@app.route("/foodquestionnaire", methods=("GET", "POST"))
     def foodquestionnaire():
         if request.method == "POST":
             session['foodlist'] = [
@@ -127,7 +153,7 @@ def create_app(test_config=None):
 
             return render_template('utilitiesresults.html', utilitiesco2=utilitiesco2)
         else:
-            return redirect('utilitiesquestionnaire')
+            return redirect('utilitiesquestionnaire')"""
 
     return app
 

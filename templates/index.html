@@ -1,9 +1,54 @@
 {% extends 'base.html' %}
 
-{% block header %}
-    <h1>{% block title %}Homepage{% endblock %}</h1>
+{% block title %}CARBOMETER{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
 {% endblock %}
 
-{% block content %}
-    <h1>Hello from the template!</h1>
+{% block main %}
+<img src="{{ url_for('static', filename='front-banner.png') }}" alt="cost of carbon, New Zealanders protesting">
+<h6>New Zealand Parliament Climate Strike Protest by Nevada Halbert CC BY 2.0</h6>
+
+<h2>ABOUT</h2>
+<hr>
+<p class="caption">
+  Learn more about climate change.
+</p>
+
+<h2>EXPLORE</h2>
+<hr>
+<p class="caption">
+  Calculate your carbon footprint.
+</p>
+
+<div class="calculator-bar">
+  <div>
+    <h2>FOOD</h2>
+    <p>
+      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Inventore officiis saepe reprehenderit neque culpa
+      aspernatur nulla blanditiis accusantium aliquid perferendis, molestias quis rerum, placeat perspiciatis ab vitae
+      incidunt nostrum natus!
+    </p>
+    <a href="{{ url_for('food') }}"><button>CALCULATE</button></a>
+  </div>
+  <div>
+    <h2>CLOTHING</h2>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, adipisci! Praesentium voluptatum facere
+      perferendis cumque laborum autem similique. Nesciunt quaerat suscipit vitae aliquid similique id libero hic
+      autem adipisci dignissimos!
+    </p>
+    <a href="{{ url_for('clothing') }}"><button>CALCULATE</button></a>
+  </div>
+  <div>
+    <h2>UTILITIES</h2>
+    <p>
+      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempora, corrupti iusto quas consequuntur consectetur
+      veritatis ratione adipisci doloremque. Fuga eaque nihil recusandae deleniti expedita earum pariatur debitis
+      praesentium voluptates quaerat?
+    </p>
+    <a href="{{ url_for('utilities') }}"><button>CALCULATE</button></a>
+  </div>
+</div>
 {% endblock %}
