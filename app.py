@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, session
+from flask import Flask, render_template, request, redirect, url_for, session, Blueprint
 
 
 def create_app(test_config=None):
@@ -29,21 +29,25 @@ def create_app(test_config=None):
     def food():
         return render_template('food.html')
 
-    @app.route("/clothing")
+    @app.route("/utilities")
     def utilities():
         return render_template('utilities.html')
 
-    @app.route("/more/about")
+    bp = Blueprint('more', __name__, url_prefix='/more')
+
+    @bp.route("/more/about")
     def about():
         return render_template('more/about.html')
 
-    @app.route("/more/action")
+    @bp.route("/more/action")
     def action():
         return render_template('more/action.html')
 
-    @app.route("/more/sources")
+    @bp.route("/more/sources")
     def sources():
         return render_template('more/sources.html')
+
+    app.register_blueprint(bp)
 
     # got lazy, just commented out the old python stuff, need to refer to it later
     # for when i add the questionnaire
