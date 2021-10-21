@@ -4,10 +4,7 @@ from flask import Flask, render_template, request, redirect, url_for, session, B
 def create_app(test_config=None):
     foodemissions = [6.62, 2.45, 1.72, 1.26,
                      0.89, 0.72, 0.16, 0.11, 0.07, 0.03]
-    clothingemissions = [4.6, ]
-    # 2.1 kg co2 cotton, 5.5 kg co2 polyester
-    #4.6, 12.1
-    # fix clothing calculator conversion list
+    clothingemissions = [30.0, 65.3, 15.7, 44.5]
 
     app = Flask(__name__, instance_relative_config=True)
     app.config.from_mapping(
@@ -38,9 +35,8 @@ def create_app(test_config=None):
             clothingoften = int(request.form['clothing_often'])
             # set laundry habits var
             for i in range(len(clothingdict)-1):
-                # * something idk wait for jessica
-                # * clothingemissions[i] but fill in list
-                clothingco2 += int(clothingdict[i]) * clothingoften
+                clothingco2 += int(clothingdict[i]) * \
+                    clothingemissions[i] * clothingoften
             # + laundry habits increment co2
 
         return render_template('clothing.html', clothingco2=clothingco2)
@@ -87,7 +83,6 @@ def create_app(test_config=None):
             utilitiesco2 = 0
 
         if not (busmode == None or weeklydrive == None):
-            # fix radio buttons
             if busmode == "bus":
                 busfactor = 0.64
             elif busmode == "light":
