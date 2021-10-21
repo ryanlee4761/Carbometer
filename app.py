@@ -21,15 +21,33 @@ def create_app(test_config=None):
     def index():
         return render_template('index.html')
 
-    @app.route("/clothing")
+    @app.route("/clothing", methods=("GET", "POST"))
     def clothing():
         return render_template('clothing.html')
 
-    @app.route("/food")
+    @app.route("/food", methods=("GET", "POST"))
     def food():
-        return render_template('food.html')
+        foodlist = None
+        foodco2 = None
+        if request.method == "POST":
+            foodlist = [
+                request.form['beef'],
+                request.form['pork'],
+                request.form['poultry'],
+                request.form['cheese'],
+                request.form['eggs'],
+                request.form['rice'],
+                request.form['legumes'],
+                request.form['carrots'],
+                request.form['potatoes'],
+            ]
+            foodco2 = 0
+            for i in range(len(foodemissions)-1):
+                foodco2 += int(foodlist[i]) * foodemissions[i]
+        return render_template('food.html', foodco2=foodco2)
+        # fix 2 2 2 2 2 2 2  2 2 bug --> round numbers??
 
-    @app.route("/utilities")
+    @app.route("/utilities", methods=("GET", "POST"))
     def utilities():
         return render_template('utilities.html')
 
@@ -48,6 +66,8 @@ def create_app(test_config=None):
         return render_template('more/sources.html')
 
     app.register_blueprint(bp)
+
+    # error 404 page?
 
     # got lazy, just commented out the old python stuff, need to refer to it later
     # for when i add the questionnaire
@@ -68,8 +88,6 @@ def create_app(test_config=None):
             return redirect(url_for('foodresults'))
         session['foodlist'] = {}
         return render_template('foodquestionnaire.html')
-        # fix 2 2 2 2 2 2 2  2 2 bug
-        # round numbers??
 
     @app.route("/foodresults")
     def foodresults():
