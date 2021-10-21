@@ -1,3 +1,11 @@
+{% set navigation_bar = [
+('/', 'index', 'HOME'),
+('/food', 'food', 'FOOD'),
+('/clothing', 'clothing', 'CLOTHING'),
+('/utilities', 'utilities', 'UTILITIES')
+] -%}
+{% set active_page = active_page|default('index') -%}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,30 +22,26 @@
     <a href="{{ url_for('index') }}">
       <h1>CARBOMETER</h1>
     </a>
-    <a href="{{ url_for('index') }}" class="active">
-      <h3>HOME</h3>
+    {% for href, id, caption in navigation_bar %}
+    <!--    https://jinja.palletsprojects.com/en/3.0.x/tricks/#highlighting-active-menu-items
+    https://flask-navigation.readthedocs.io/en/latest/
+    https://medium.com/analytics-vidhya/flask-how-create-a-responsive-navbar-146c7213df60 -->
+    <a {% if id==active_page %}class="active" {% endif %} href="{{  href|e }}">
+      <h3>{{ caption|e }}</h3>
     </a>
-    <a href="{{ url_for('food') }}">
-      <h3>FOOD</h3>
-    </a>
-    <a href="{{ url_for('clothing') }}">
-      <h3>CLOTHING</h3>
-    </a>
-    <a href="{{ url_for('utilities') }}">
-      <h3>UTILITIES</h3>
-    </a>
+    {% endfor %}
     <div class="dropdown">
       <span>
         <h3>MORE</h3>
       </span>
       <div class="dropdown-content">
-        <a href="{{ url_for('more.about') }}">
+        <a {% if active_page=='about' %}class="active" {% endif %} href="{{ url_for('more.about') }}">
           <h3>ABOUT</h3>
         </a>
-        <a href="{{ url_for('more.action') }}">
+        <a {% if active_page=='action' %}class="active" {% endif %} href="{{ url_for('more.action') }}">
           <h3>ACTION</h3>
         </a>
-        <a href="{{ url_for('more.sources') }}">
+        <a {% if active_page=='sources' %}class="active" {% endif %} href="{{ url_for('more.sources') }}">
           <h3>SOURCES</h3>
         </a>
       </div>
