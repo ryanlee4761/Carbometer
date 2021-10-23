@@ -20,6 +20,29 @@ def create_app(test_config=None):
     def index():
         return render_template('index.html')
 
+    @app.route("/food", methods=("GET", "POST"))
+    def food():
+        foodlist = None
+        foodco2 = None
+        if request.method == "POST":
+            foodlist = [
+                request.form['beef'],
+                request.form['pork'],
+                request.form['poultry'],
+                request.form['cheese'],
+                request.form['eggs'],
+                request.form['rice'],
+                request.form['legumes'],
+                request.form['carrots'],
+                request.form['potatoes'],
+            ]
+            foodco2 = 0
+            for i in range(len(foodemissions)-1):
+                foodco2 += int(foodlist[i]) * foodemissions[i] * 52
+
+            foodco2 = round(foodco2, 2)
+        return render_template('food.html', foodco2=foodco2)
+
     @app.route("/clothing", methods=("GET", "POST"))
     def clothing():
         clothingdict = None
@@ -39,30 +62,8 @@ def create_app(test_config=None):
                     clothingemissions[i] * clothingoften
             # + laundry habits increment co2
 
+            clothingco2 = round(clothingco2, 2)
         return render_template('clothing.html', clothingco2=clothingco2)
-
-    @app.route("/food", methods=("GET", "POST"))
-    def food():
-        foodlist = None
-        foodco2 = None
-        if request.method == "POST":
-            foodlist = [
-                request.form['beef'],
-                request.form['pork'],
-                request.form['poultry'],
-                request.form['cheese'],
-                request.form['eggs'],
-                request.form['rice'],
-                request.form['legumes'],
-                request.form['carrots'],
-                request.form['potatoes'],
-            ]
-            foodco2 = 0
-            for i in range(len(foodemissions)-1):
-                foodco2 += int(foodlist[i]) * foodemissions[i]
-        return render_template('food.html', foodco2=foodco2)
-        # fix same number roudning bug --> round numbers??
-        # round to tenths place
 
     @app.route("/utilities", methods=("GET", "POST"))
     def utilities():
@@ -78,21 +79,27 @@ def create_app(test_config=None):
             weeklydrive = int(request.form['weeklydrive'])
             weeklybus = int(request.form['weeklybus'])
             carpoolers = int(request.form['carpoolers'])
-            busmode = request.form['busmode']
+            try:
+                busmode = request.form['busmode']
+            except:
+                busmode = None
             busfactor = 0
             utilitiesco2 = 0
 
-        if not (busmode == None or weeklydrive == None):
             if busmode == "bus":
                 busfactor = 0.64
             elif busmode == "light":
                 busfactor = 0.36
             elif busmode == "heavy":
                 busfactor = 0.22
+            else:
+                busfactor = 0
 
             utilitiesco2 += kwh_pm * 12 * .92
-            utilitiesco2 += weeklydrive * .89 / (carpoolers+1)
-            utilitiesco2 += weeklybus * busfactor
+            utilitiesco2 += weeklydrive * .89 * 52 / (carpoolers+1)
+            utilitiesco2 += weeklybus * busfactor * 52
+
+            utilitiesco2 = round(utilitiesco2, 2)
         return render_template('utilities.html', utilitiesco2=utilitiesco2)
 
     bp = Blueprint('more', __name__, url_prefix='/more')
