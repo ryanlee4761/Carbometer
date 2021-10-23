@@ -30,16 +30,20 @@
         <form method="post">
             <h2>Electricity</h2>
             <label for="kwh_pm">How many kWh do you use every month?</label>
-            <input name="kwh_pm" id="kwh_pm" type="number" required>
+            <input name="kwh_pm" id="kwh_pm" type="number" min="0" step="1" oninput="validity.valid||(value='');"
+                required>
 
             <h2>Transportation</h2>
             <label for="weeklydrive">On average, how many miles do you drive in a week?</label><br>
-            <input name="weeklydrive" id="weeklydrive" type="number" required><br>
+            <input name="weeklydrive" id="weeklydrive" type="number" min="0" step="1"
+                oninput="validity.valid||(value='');" required><br>
             <label for="carpoolers">How many people do you usually carpool with when driving? (put 0 if you don't
                 drive)</label><br>
-            <input name="carpoolers" id="carpoolers" type="number" required><br>
+            <input name="carpoolers" id="carpoolers" type="number" min="0" step="1"
+                oninput="validity.valid||(value='');" required><br>
             <label for="weeklybus">On average, how many miles do you take the bus/train in a week?</label><br>
-            <input name="weeklybus" id="weeklybus" type="number" required>
+            <input name="weeklybus" id="weeklybus" type="number" min="0" step="1" oninput="validity.valid||(value='');"
+                required>
 
             <!-- heavy/light rail or bus selectors
             conditionally render or conditionally consider input?

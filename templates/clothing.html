@@ -28,24 +28,29 @@
     {% else %}
     <form method="post">
       <label for="clothing_often">How often do you buy clothes in a year?</label><!-- more clarity -->
-      <input name="clothing_often" id="clothing_often" type="number" required><br>
+      <input name="clothing_often" id="clothing_often" type="number" min="0" step="1"
+        oninput="validity.valid||(value='');" required><br>
       <label for="clothing_pieces">On average, about how many pieces of each do you buy each time you shop?</label>
       <ol name="clothing_pieces">
         <ul>
           <label for="clothing_top">Top</label><br>
-          <input name="clothing_top" id="clothing_top" type="number" required>
+          <input name="clothing_top" id="clothing_top" type="number" min="0" step="1"
+            oninput="validity.valid||(value='');" required>
         </ul>
         <ul>
           <label for="clothing_bottom">Bottom</label><br>
-          <input name="clothing_bottom" id="clothing_bottom" type="number" required>
+          <input name="clothing_bottom" id="clothing_bottom" type="number" min="0" step="1"
+            oninput="validity.valid||(value='');" required>
         </ul>
         <ul>
           <label for="clothing_shoes">Shoes</label><br>
-          <input name="clothing_shoes" id="clothing_shoes" type="number" required>
+          <input name="clothing_shoes" id="clothing_shoes" type="number" min="0" step="1"
+            oninput="validity.valid||(value='');" required>
         </ul>
         <ul>
           <label for="clothing_outerwear">Outerwear</label><br>
-          <input name="clothing_outerwear" id="clothing_outerwear" type="number" required>
+          <input name="clothing_outerwear" id="clothing_outerwear" type="number" min="0" step="1"
+            oninput="validity.valid||(value='');" required>
         </ul>
       </ol>
       <label for="">What are your laundry habits?</label>
