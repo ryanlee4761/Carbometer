@@ -13,31 +13,38 @@
     <!--pic/doodle-->
   </div>
   <div id="p2">
-    Huge amounts of water are needed to grow cotton for a piece of clothing, but most of our clothes are made from the polymer, polyester, for which 70 million barrels of oil are used annually to make. On top of making the materials for our clothes, sewing and transporting our clothes also produce greenhouse gases. The emissions from all of these actions combined make it so that the fashion industry to accounts for 10% of global carbon emissions, not to mention 20% of the waste water. 
-    
+    Huge amounts of water are needed to grow cotton for a piece of clothing, but most of our clothes are made from the
+    polymer, polyester, for which 70 million barrels of oil are used annually to make. On top of making the materials
+    for our clothes, sewing and transporting our clothes also produce greenhouse gases. The emissions from all of these
+    actions combined make it so that the fashion industry to accounts for 10% of global carbon emissions, not to mention
+    20% of the waste water.
     <br><br>
-    
+
   </div>
   <div id="p3">
+    {% if request.method=='POST' %}
+    <p>Your projected annual CO2 emissions from clothing (lbs): {{ clothingco2 }} </p>
+    <!-- add css/other tags to the results display? -->
+    {% else %}
     <form method="post">
       <label for="clothing_often">How often do you buy clothes in a year?</label><!-- more clarity -->
       <input name="clothing_often" id="clothing_often" type="number" required><br>
       <label for="clothing_pieces">On average, about how many pieces of each do you buy each time you shop?</label>
       <ol name="clothing_pieces">
         <ul>
-          <p>Top</p>
+          <label for="clothing_top">Top</label><br>
           <input name="clothing_top" id="clothing_top" type="number" required>
         </ul>
         <ul>
-          <p>Bottom</p>
+          <label for="clothing_bottom">Bottom</label><br>
           <input name="clothing_bottom" id="clothing_bottom" type="number" required>
         </ul>
         <ul>
-          <p>Shoes</p>
+          <label for="clothing_shoes">Shoes</label><br>
           <input name="clothing_shoes" id="clothing_shoes" type="number" required>
         </ul>
         <ul>
-          <p>Outerwear</p>
+          <label for="clothing_outerwear">Outerwear</label><br>
           <input name="clothing_outerwear" id="clothing_outerwear" type="number" required>
         </ul>
       </ol>
@@ -49,19 +56,23 @@
 
       <input type="submit" value="Submit">
     </form>
+    {% endif %}
     <br><br>
     <b>Steps to improve your carbon footprint: </b><br>
-    Buy second hand items. Thrifting clothes is not only a good way to find hidden fashionable-gems, but also a great way to reduce your individual carbon footprint from clothing manufacturing.
+    Buy second hand items. Thrifting clothes is not only a good way to find hidden fashionable-gems, but also a great
+    way to reduce your individual carbon footprint from clothing manufacturing.
     <br><br>
-    Buy from sustainable brands, such as Patagonia, Allbirds, Everlane, Girlfriend Collective, and many more. The few minutes of research to find sustainable clothing companies will help reduce your carbon footprint. Not to mention, you will feel better knowing that you are wearing a stylish and sustainable outfit. 
+    Buy from sustainable brands, such as Patagonia, Allbirds, Everlane, Girlfriend Collective, and many more. The few
+    minutes of research to find sustainable clothing companies will help reduce your carbon footprint. Not to mention,
+    you will feel better knowing that you are wearing a stylish and sustainable outfit.
     <br><br>
-    Do laundry at lower temperatures, air dry, and go to the dry cleaners less. All three of these actions reduce the amount of heating and electricity needed to clean one load of laundry, which helps to decrease your carbon footprint. 
+    Do laundry at lower temperatures, air dry, and go to the dry cleaners less. All three of these actions reduce the
+    amount of heating and electricity needed to clean one load of laundry, which helps to decrease your carbon
+    footprint.
     <br><br>
-    Purchase classic pieces as opposed to trendy items. Over half of fast fashion items end up in landfills, and this means that more carbon is produced due to the increased manufacturing need to keep supply of items up with the fast fashion’s turnaround times.
-
-    {% if request.method=='POST' %}
-    <p>Your projected annual CO2 emissions from clothing (lbs): {{ clothingco2 }} </p>
-    {% endif %}
+    Purchase classic pieces as opposed to trendy items. Over half of fast fashion items end up in landfills, and this
+    means that more carbon is produced due to the increased manufacturing need to keep supply of items up with the fast
+    fashion’s turnaround times.
   </div>
 </section>
 {% endblock %}

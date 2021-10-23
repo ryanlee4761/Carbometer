@@ -5,6 +5,7 @@
 
 {% block css %}
 <link rel="stylesheet" href="{{ url_for('static', filename='pages.css') }}">
+<script src="{{ url_for('static', filename='form.js') }}"></script>
 {% endblock %}
 
 {% block main %}
@@ -13,40 +14,47 @@
         <!--pic/doodle-->
     </div>
     <div id="p2">
-        Transportation is an essential part of our lifestyle, but most vehicles use gasoline or diesel, both of which release carbon dioxide into the atmosphere. Globally transportation accounts for 15-20% of emissions annually. 
-        
-        Emissions from electricity use can vary by the type of fuel source used and by the type of power plant. For instance, coal will release more CO2 than petroleum and natural gas, but nuclear, solar, wind, and hydroelectric don’t release any CO2. The time of day can effect the source of the electricity supplied to the power grid, which means that the carbon footprint of a person also depends on the time of day. In this calculator, we’re using an estimated, average value for the amount of CO2 released by a power plant.
+        Transportation is an essential part of our lifestyle, but most vehicles use gasoline or diesel, both of which
+        release carbon dioxide into the atmosphere. Globally transportation accounts for 15-20% of emissions annually.
+
+        Emissions from electricity use can vary by the type of fuel source used and by the type of power plant. For
+        instance, coal will release more CO2 than petroleum and natural gas, but nuclear, solar, wind, and hydroelectric
+        don’t release any CO2. The time of day can effect the source of the electricity supplied to the power grid,
+        which means that the carbon footprint of a person also depends on the time of day. In this calculator, we’re
+        using an estimated, average value for the amount of CO2 released by a power plant.
     </div>
     <div id="p3">
+        {% if request.method=='POST' %}
+        <p>Your projected annual CO2 emissions from utilities (lbs): {{ utilitiesco2 }} </p>
+        {% else %}
         <form method="post">
-            <h3>Electricity</h3>
+            <h2>Electricity</h2>
             <label for="kwh_pm">How many kWh do you use every month?</label>
             <input name="kwh_pm" id="kwh_pm" type="number" required>
 
-            <h3>Transportation</h3>
-            <label for="weeklydrive">On average, how many miles do you drive in a week?</label>
-            <input name="weeklydrive" id="weeklydrive" type="number" required>
+            <h2>Transportation</h2>
+            <label for="weeklydrive">On average, how many miles do you drive in a week?</label><br>
+            <input name="weeklydrive" id="weeklydrive" type="number" required><br>
             <label for="carpoolers">How many people do you usually carpool with when driving? (put 0 if you don't
-                drive)</label>
-            <input name="carpoolers" id="carpoolers" type="number" required>
-            <label for="weeklybus">On average, how many miles do you take the bus/train in a week?</label>
+                drive)</label><br>
+            <input name="carpoolers" id="carpoolers" type="number" required><br>
+            <label for="weeklybus">On average, how many miles do you take the bus/train in a week?</label><br>
             <input name="weeklybus" id="weeklybus" type="number" required>
 
             <!-- heavy/light rail or bus selectors
             conditionally render or conditionally consider input?
             -->
-            <p>Do you take the bus, light rail, or heavy rail?</p>
-            <input name="busmode" id="bus" type="radio" value="bus" required>
-            <label for="bus">Bus</label>
-            <input name="busmode" id="light" type="radio" value="light" required>
-            <label for="light">Light rail</label>
-            <input name="busmode" id="heavy" type="radio" value="heavy" required>
-            <label for="heavy">Heavy rail</label>
-
+            <div id="busmodeform">
+                <p>Do you typically take the bus, light rail, or heavy rail?</p>
+                <input name="busmode" id="bus" type="radio" value="bus">
+                <label for="bus">Bus</label><br>
+                <input name="busmode" id="light" type="radio" value="light">
+                <label for="light">Light rail</label><br>
+                <input name="busmode" id="heavy" type="radio" value="heavy">
+                <label for="heavy">Heavy rail</label><br>
+            </div>
             <input type="submit" value="Submit">
         </form>
-        {% if request.method=='POST' %}
-        <p>Your projected annual CO2 emissions from utilities (lbs): {{ utilitiesco2 }} </p>
         {% endif %}
     </div>
 </section>
