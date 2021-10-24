@@ -64,11 +64,26 @@ h3:hover, .active {
   text-underline-offset: 10px;
 }
 
+input[type=submit] {
+  background-color: honeydew;
+  padding: 5px;
+  margin-bottom: 10px;
+  font-size: 18px;
+  border: 1px solid black;
+}
+
+input[type=submit]:hover {
+  background-color: #2F4F4F;
+  color: white;
+}
+
 section {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    margin: 1em;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  margin: 0 0.5em;
+  padding: 1em;
+  min-height: 80vh;
 }
 
 #p1 {
@@ -93,14 +108,14 @@ section {
 footer {
     background-color: #2F4F4F;
     color: white;
-    margin-top: 50px;
     margin-bottom: 0;
     padding: 5px 20px;
     display: grid;
     grid-template-columns: 2fr 175px 100px;
     align-items: center;
 
-    height: 8rem;
+    min-height: 8rem;
+    height: 10%;
     width: calc(100% - 40px);
     position: absolute;
     bottom: 0;
