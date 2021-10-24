@@ -23,9 +23,6 @@
       <h1>CARBOMETER</h1>
     </a>
     {% for href, id, caption in navigation_bar %}
-    <!--    https://jinja.palletsprojects.com/en/3.0.x/tricks/#highlighting-active-menu-items
-    https://flask-navigation.readthedocs.io/en/latest/
-    https://medium.com/analytics-vidhya/flask-how-create-a-responsive-navbar-146c7213df60 -->
     <a {% if id==active_page %}class="active" {% endif %} href="{{  href|e }}">
       <h3>{{ caption|e }}</h3>
     </a>
