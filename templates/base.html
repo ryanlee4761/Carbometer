@@ -15,6 +15,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   {% block css %}{% endblock %}
   <title>{% block title %}{% endblock %}</title>
+  <link rel="icon" href="{{ url_for('static', filename='carbometer-favicon.png') }}">
 </head>
 
 <body>
@@ -32,13 +33,13 @@
         <h3>MORE</h3>
       </span>
       <div class="dropdown-content">
-        <a {% if active_page=='about' %}class="active" {% endif %} href="{{ url_for('more.about') }}">
+        <a href="{{ url_for('more.about') }}">
           <h3>ABOUT</h3>
         </a>
-        <a {% if active_page=='action' %}class="active" {% endif %} href="{{ url_for('more.action') }}">
+        <a href="{{ url_for('more.action') }}">
           <h3>ACTION</h3>
         </a>
-        <a {% if active_page=='sources' %}class="active" {% endif %} href="{{ url_for('more.sources') }}">
+        <a href="{{ url_for('more.sources') }}">
           <h3>SOURCES</h3>
         </a>
       </div>

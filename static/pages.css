@@ -77,6 +77,10 @@ input[type=submit]:hover {
   color: white;
 }
 
+img {
+  max-width: 50vw;
+}
+
 section {
   display: grid;
   grid-template-columns: 1fr 1fr;
