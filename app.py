@@ -22,7 +22,6 @@ def create_app(test_config=None):
 
     @app.route("/food", methods=("GET", "POST"))
     def food():
-        foodlist = None
         foodco2 = None
         if request.method == "POST":
             foodlist = [
@@ -45,7 +44,6 @@ def create_app(test_config=None):
 
     @app.route("/clothing", methods=("GET", "POST"))
     def clothing():
-        clothingdict = None
         clothingco2 = None
         if request.method == "POST":
             clothingdict = [
@@ -67,12 +65,6 @@ def create_app(test_config=None):
 
     @app.route("/utilities", methods=("GET", "POST"))
     def utilities():
-        kwh_pm = None
-        weeklydrive = None
-        weeklybus = None
-        carpoolers = None
-        busmode = None
-        busfactor = None
         utilitiesco2 = None
         if request.method == "POST":
             kwh_pm = int(request.form['kwh_pm'])
