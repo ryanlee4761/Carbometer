@@ -36,7 +36,6 @@ nav h1 {
   overflow: hidden;
   background-color: #F5F5F5;
   padding: 5px 20px;
-  margin-bottom: 20px;
   z-index: 1;
 }
 
@@ -50,7 +49,7 @@ nav h1 {
 }
 
 .dropdown-content h3:last-of-type {
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 
 h3 {
