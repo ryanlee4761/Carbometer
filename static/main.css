@@ -33,7 +33,6 @@ nav h1 {
 .dropdown-content {
   display: none;
   position: absolute;
-  width: 130px;
   overflow: hidden;
   background-color: #F5F5F5;
   padding: 5px 20px;
