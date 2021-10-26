@@ -94,7 +94,7 @@ section {
     grid-column: 1 / 2;
     object-fit: cover;
     width: 70%;
-    height: 70%;
+    max-height: 70%;
 }
 
 #p2 {
