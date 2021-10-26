@@ -92,6 +92,9 @@ section {
 #p1 {
     grid-row: 1 / 2;
     grid-column: 1 / 2;
+    object-fit: cover;
+    width: 70%;
+    height: 70%;
 }
 
 #p2 {
