@@ -26,7 +26,7 @@
     <p>Your projected annual CO2 emissions from clothing (lbs): {{ clothingco2 }} </p>
     {% else %}
     <form method="post">
-      <label for="clothing_often">How often do you buy clothes in a year?</label><!-- more clarity -->
+      <label for="clothing_often">How often do you buy clothes in a year?</label><!-- more clarity --><br>
       <input name="clothing_often" id="clothing_often" type="number" min="0" step="1"
         oninput="validity.valid||(value='');" required><br>
       <label for="clothing_pieces">On average, about how many pieces of each do you buy each time you shop?</label>
@@ -57,7 +57,7 @@
             idk how to turn this into numbers for the calculator, any suggestions?
             <input name="" id="" type="number" required>
         -->
-
+<br><br>
       <input type="submit" value="Submit">
     </form>
     {% endif %}
