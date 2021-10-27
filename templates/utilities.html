@@ -14,7 +14,7 @@
         <img src="{{ url_for('static', filename='utilities-image.png') }}">
     </div>
     <div id="p2">
-        
+
     </div>
     <div id="p3">
         {% if request.method=='POST' %}
@@ -30,10 +30,12 @@
         using an estimated, average value for the amount of CO2 released by a power plant.<br>
         <form method="post">
             <h2>Electricity</h2>
-            <label for="kwh_pm">How many kWh do you use every month?</label><br>
+            <label for="kwh_pm">How many kWh does your household use every month?</label><br>
             <input name="kwh_pm" id="kwh_pm" type="number" min="0" step="1" oninput="validity.valid||(value='');"
+                required><br>
+            <label for="household">How many people live in your household?</label><br>
+            <input name="household" id="household" type="number" min="0" step="1" oninput="validity.valid||(value='');"
                 required>
-
             <h2>Transportation</h2>
             <label for="weeklydrive">On average, how many miles do you drive in a week?</label><br>
             <input name="weeklydrive" id="weeklydrive" type="number" min="0" step="1"

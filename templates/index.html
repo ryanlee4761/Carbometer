@@ -14,9 +14,15 @@
 <h2>ABOUT</h2>
 <hr>
 <p class="caption">
-   Climate change is the change in temperature and weather of a place. In recent times, the Earth’s temperature has gone up, and these changes in temperature can have huge long-term effects. For example, the warming of earth’s climate causes ice to melt, leading to rising sea levels. The weather also changes, causing hotter summers, colder winters, droughts, stronger hurricanes, etc. 
+  Climate change is the change in temperature and weather of a place. In recent times, the Earth’s temperature has gone
+  up, and these changes in temperature can have huge long-term effects. For example, the warming of earth’s climate
+  causes ice to melt, leading to rising sea levels. The weather also changes, causing hotter summers, colder winters,
+  droughts, stronger hurricanes, etc.
   <br><br>
-  People can contribute to climate change. Driving cars, using heaters and AC units, manufacturing goods, and raising livestock are all activities that use up energy, and burning fossil fuels, such as coal and oil, is one way we get this energy. Burning fossil fuels emit greenhouse gases, like CO2, into the air, and these gases cause the air to heat up leading to climate change as they accumulate in the atmosphere. 
+  People can contribute to climate change. Driving cars, using heaters and AC units, manufacturing goods, and raising
+  livestock are all activities that use up energy, and burning fossil fuels, such as coal and oil, is one way we get
+  this energy. Burning fossil fuels emit greenhouse gases, like CO2, into the air, and these gases cause the air to heat
+  up leading to climate change as they accumulate in the atmosphere.
 
 </p>
 
@@ -25,27 +31,43 @@
 <p class="caption">
   Calculate your carbon footprint.
 </p>
-
+{% if foodco2 != None and clothingco2 != None and utilitiesco2 != None %}
+<p class="caption">
+  Total CO2 produced: {{ foodco2 + clothingco2 + utilitiesco2 }}
+</p>
+{% else %}
+<br>
+{% endif %}
+<!-- change styling later -->
 <div class="calculator-bar">
   <div>
     <h2>FOOD</h2>
-    <p>
-      
-    </p>
+    {% if foodco2 != None %}
+    <p>Your Score: {{ foodco2 }}</p>
+    {% else %}
+    <br>
+    {% endif %}
+    <br>
     <a href="{{ url_for('food') }}"><button>CALCULATE</button></a>
   </div>
   <div>
     <h2>CLOTHING</h2>
-    <p>
-      
-    </p>
+    {% if clothingco2 != None %}
+    <p>Your Score: {{ clothingco2 }}</p>
+    {% else %}
+    <br>
+    {% endif %}
+    <br>
     <a href="{{ url_for('clothing') }}"><button>CALCULATE</button></a>
   </div>
   <div>
     <h2>UTILITIES</h2>
-    <p>
-       
-    </p>
+    {% if utilitiesco2 %}
+    <p>Your Score: {{ utilitiesco2 }}</p>
+    {% else %}
+    <br>
+    {% endif %}
+    <br>
     <a href="{{ url_for('utilities') }}"><button>CALCULATE</button></a>
   </div>
 </div>
