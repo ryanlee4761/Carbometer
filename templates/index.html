@@ -28,15 +28,14 @@
 
 <h2>EXPLORE</h2>
 <hr>
-<p class="caption">
-  Calculate your carbon footprint.
-</p>
 {% if totalco2 != None %}
 <h2>
   Total CO2 produced: {{ totalco2 }}
 </h2>
 {% else %}
-<br>
+<p class="caption">
+  Calculate your carbon footprint.
+</p>
 {% endif %}
 <div class="calculator-bar">
   <div>
