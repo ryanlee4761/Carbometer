@@ -129,6 +129,12 @@ button:hover {
   min-height: 80vh;
 }
 
+#facts {
+    margin: 1em;
+    margin-bottom: 2em;
+    text-align: center;
+}
+
 footer {
   background-color: #2F4F4F;
   color: white;
