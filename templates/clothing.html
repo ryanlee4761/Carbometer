@@ -13,7 +13,7 @@
     <img src="{{ url_for('static', filename='clothing-image.png') }}">
   </div>
   <div id="p2">
-   
+
     <br><br>
 
   </div>
@@ -21,7 +21,7 @@
     {% if request.method=='POST' %}
     <p>Your projected annual CO2 emissions from clothing (lbs): {{ clothingco2 }} </p>
     {% else %}
-     Huge amounts of water are needed to grow cotton for a piece of clothing, but most of our clothes are made from the
+    Huge amounts of water are needed to grow cotton for a piece of clothing, but most of our clothes are made from the
     polymer, polyester, for which 70 million barrels of oil are used annually to make. On top of making the materials
     for our clothes, sewing and transporting our clothes also produce greenhouse gases. The emissions from all of these
     actions combined make it so that the fashion industry to accounts for 10% of global carbon emissions, not to mention
@@ -53,12 +53,15 @@
             oninput="validity.valid||(value='');" required>
         </ul>
       </ol>
-      <label for="">What are your laundry habits?</label>
-      <!--
-            idk how to turn this into numbers for the calculator, any suggestions?
-            <input name="" id="" type="number" required>
-        -->
-<br><br>
+      <label for="laundryloads">On average, how many loads of laundry do you wash in a week?</label>
+      <input name="laundryloads" id="laundryloads" type="number" min="0" step="1" oninput="validity.valid||(value='');"
+        required>
+      <p>Do you dry your clothes on a clothesline or in a clothes dryer?</p>
+      <input name="clothesline" id="yesline" type="radio" value="True" required>
+      <label for="yesline">Yes</label><br>
+      <input name="clothesline" id="noline" type="radio" value="False" required>
+      <label for="noline">No</label><br>
+      <br><br>
       <input type="submit" value="Submit">
     </form>
     {% endif %}

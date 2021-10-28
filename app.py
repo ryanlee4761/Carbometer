@@ -68,11 +68,15 @@ def create_app(test_config=None):
             ]
             clothingco2 = 0
             clothingoften = int(request.form['clothing_often'])
-            # set laundry habits var
+            laundryloads = int(request.form['laundryloads'])
+            clothesline = request.form['clothesline']
             for i in range(len(clothingdict)-1):
                 clothingco2 += int(clothingdict[i]) * \
                     clothingemissions[i] * clothingoften
-            # + laundry habits increment co2
+            if clothesline == "True":
+                clothingco2 += laundryloads * 1.54
+            elif clothesline == "False":
+                clothingco2 += laundryloads * 5.29
 
             clothingco2 = round(clothingco2, 2)
             session['clothingco2'] = clothingco2
