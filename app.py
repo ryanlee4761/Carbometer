@@ -31,7 +31,11 @@ def create_app(test_config=None):
         except:
             utilitiesco2 = None
 
-        return render_template('index.html', foodco2=foodco2, clothingco2=clothingco2, utilitiesco2=utilitiesco2)
+        totalco2 = None
+        if foodco2 and clothingco2 and utilitiesco2:
+            totalco2 = round(foodco2 + clothingco2 + utilitiesco2, 2)
+
+        return render_template('index.html', foodco2=foodco2, clothingco2=clothingco2, utilitiesco2=utilitiesco2, totalco2=totalco2)
 
     @app.route("/food", methods=("GET", "POST"))
     def food():
