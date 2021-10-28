@@ -5,3 +5,9 @@
 {% block css %}
 <link rel="stylesheet" href="{{ url_for('static', filename='pages.css') }}">
 {% endblock %}
+
+{% block main %}
+<div class="p1">
+    <img src="{{ url_for('static', filename='groupphoto.jpeg') }}">
+</div>
+{% endblock %}
