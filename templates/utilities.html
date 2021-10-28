@@ -14,9 +14,6 @@
         <img src="{{ url_for('static', filename='utilities-image.png') }}">
     </div>
     <div id="p2">
-
-    </div>
-    <div id="p3">
         {% if request.method=='POST' %}
         <p>Your projected annual CO2 emissions from utilities (lbs): {{ utilitiesco2 }} </p>
         {% else %}
