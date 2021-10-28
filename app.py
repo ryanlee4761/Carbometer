@@ -20,20 +20,32 @@ def create_app(test_config=None):
     def index():
         try:
             foodco2 = session['foodco2']
+            foodco2 = float(foodco2)
         except:
             foodco2 = None
         try:
             clothingco2 = session['clothingco2']
+            clothingco2 = float(clothingco2)
         except:
             clothingco2 = None
         try:
             utilitiesco2 = session['utilitiesco2']
+            utilitiesco2 = float(utilitiesco2)
         except:
             utilitiesco2 = None
 
         totalco2 = None
         if foodco2 and clothingco2 and utilitiesco2:
-            totalco2 = round(foodco2 + clothingco2 + utilitiesco2, 2)
+            totalco2 = foodco2 + clothingco2 + utilitiesco2
+            totalco2 = round(totalco2, 2)
+            totalco2 = "{:,}".format(totalco2)
+
+        if foodco2:
+            foodco2 = "{:,}".format(foodco2)
+        if clothingco2:
+            clothingco2 = "{:,}".format(clothingco2)
+        if utilitiesco2:
+            utilitiesco2 = "{:,}".format(utilitiesco2)
 
         return render_template('index.html', foodco2=foodco2, clothingco2=clothingco2, utilitiesco2=utilitiesco2, totalco2=totalco2)
 
@@ -58,6 +70,7 @@ def create_app(test_config=None):
 
             foodco2 = round(foodco2, 2)
             session['foodco2'] = foodco2
+            return render_template('food.html', foodco2="{:,}".format(foodco2))
         return render_template('food.html', foodco2=foodco2)
 
     @app.route("/clothing", methods=("GET", "POST"))
@@ -84,6 +97,7 @@ def create_app(test_config=None):
 
             clothingco2 = round(clothingco2, 2)
             session['clothingco2'] = clothingco2
+            return render_template('clothing.html', clothingco2="{:,}".format(clothingco2))
         return render_template('clothing.html', clothingco2=clothingco2)
 
     @app.route("/utilities", methods=("GET", "POST"))
@@ -111,12 +125,13 @@ def create_app(test_config=None):
             else:
                 busfactor = 0
 
-            utilitiesco2 += kwh_pm * 12 * .92 / household
+            utilitiesco2 += kwh_pm * 12 * .92 / (household+1)
             utilitiesco2 += weeklydrive * .89 * 52 / (carpoolers+1)
             utilitiesco2 += weeklybus * busfactor * 52
 
             utilitiesco2 = round(utilitiesco2, 2)
             session['utilitiesco2'] = utilitiesco2
+            return render_template('utilities.html', utilitiesco2="{:,}".format(utilitiesco2))
         return render_template('utilities.html', utilitiesco2=utilitiesco2)
 
     bp = Blueprint('more', __name__, url_prefix='/more')
