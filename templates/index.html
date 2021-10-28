@@ -32,9 +32,9 @@
   Calculate your carbon footprint.
 </p>
 {% if foodco2 != None and clothingco2 != None and utilitiesco2 != None %}
-<p class="caption">
+<h2>
   Total CO2 produced: {{ foodco2 + clothingco2 + utilitiesco2 }}
-</p>
+</h2>
 {% else %}
 <br>
 {% endif %}
