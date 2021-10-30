@@ -89,6 +89,15 @@ img {
   max-width: 50vw;
 }
 
+.caption {
+  color: #A9A9A9;
+  text-align: center;
+  font-size: 10pt;
+  font-style: italic;
+  padding-right: 80px;
+  padding-left: 80px;
+}
+
 section {
   display: grid;
   grid-template-columns: 1fr 1fr;
