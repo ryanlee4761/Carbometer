@@ -156,7 +156,7 @@ footer div {
   font-size: 1px;
 }
 
-.src {
+.source {
     margin: 1em;
     line-height: 20px;
 }
@@ -165,7 +165,7 @@ footer div {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  width: 100vw;
+  max-width: 100vw;
 }
 .action-item {
   display: flex;
