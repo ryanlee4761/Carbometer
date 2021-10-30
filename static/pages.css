@@ -118,6 +118,7 @@ section {
 #content-wrap {
   padding-bottom: 10rem;
   min-height: 80vh;
+  max-width: 100vw;
 }
 
 footer {
@@ -163,6 +164,7 @@ footer div {
 .action {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
 }
 .action-item {
   display: flex;
