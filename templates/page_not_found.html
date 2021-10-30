@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}PAGE NOT FOUND{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='pages.css') }}">
+{% endblock %}
+
+{% block main %}
+<section class="center">
+    <h1>PAGE NOT FOUND</h1>
+    <p>The requested URL was not found or does not exist. Please check your spelling if you entered the URL
+        manually.</p>
+    <p>Alternatively, you can press a link in the navigation bar or click <a href="{{ url_for('index') }}">here</a>
+        to return to the homepage.</p>
+</section>
+{% endblock %}
