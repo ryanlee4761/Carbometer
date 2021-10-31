@@ -29,9 +29,10 @@
 <hr>
 {% if totalco2 != None %}
 <h2>
-  Total CO2 produced: {{ totalco2 }} lbs/year*
+  Total CO2 produced: {{ totalco2 }} lbs/year, or about {{ totaltons }} tons/year*
 </h2>
-<p class="caption">*Please note that this an approximation and does not account for all possible sources of carbon
+<p class="caption">*Please note that these numbers are approximations and does not account for all possible sources of
+  carbon
   emissions</p>
 {% else %}
 <p class="caption">

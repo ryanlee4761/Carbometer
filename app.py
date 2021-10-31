@@ -35,9 +35,11 @@ def create_app(test_config=None):
             utilitiesco2 = None
 
         totalco2 = None
+        totaltons = None
         if foodco2 and clothingco2 and utilitiesco2:
             totalco2 = foodco2 + clothingco2 + utilitiesco2
             totalco2 = round(totalco2, 2)
+            totaltons = int(totalco2//2000)
             totalco2 = "{:,}".format(totalco2)
 
         if foodco2:
@@ -47,7 +49,7 @@ def create_app(test_config=None):
         if utilitiesco2:
             utilitiesco2 = "{:,}".format(utilitiesco2)
 
-        return render_template('index.html', foodco2=foodco2, clothingco2=clothingco2, utilitiesco2=utilitiesco2, totalco2=totalco2)
+        return render_template('index.html', foodco2=foodco2, clothingco2=clothingco2, utilitiesco2=utilitiesco2, totalco2=totalco2, totaltons=totaltons)
 
     @app.route("/food", methods=("GET", "POST"))
     def food():
