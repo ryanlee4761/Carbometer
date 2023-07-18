@@ -11,6 +11,5 @@ COPY . /app
 RUN pip install -r requirements.txt
 
 # Define the entry point for the container
-CMD ["python", "app.py", "create_app", "0.0.0.0:8000"]
-
 EXPOSE 8000
+CMD ["python", "app.py", "create_app", "--host", "0.0.0.0", "--port", "8000"]
