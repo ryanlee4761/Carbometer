@@ -20,7 +20,7 @@
   <meta property="og:title" content="{% block title %}{% endblock %}" />
   
   {% block css %}{% endblock %}
-  <title>{% self.title() %}</title>
+  <title>{{ self.title() }}</title>
   <link rel="icon" href="{{ url_for('static', filename='carbometer-favicon.png') }}">
 </head>
 
